@@ -1,4 +1,5 @@
 -- Functional wrapper for mapping custom keybindings
+
 function map(mode, lhs, rhs, opts)
     local options = { noremap = true }
     if opts then
@@ -9,6 +10,23 @@ end
 
 map('i', 'jl', '<Esc>')
 vim.keymap.set('t','jl', '<C-\\><C-n>', { remap = true })
+
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+
+require("telescope").load_extension "file_browser"
+vim.api.nvim_set_keymap(
+  "n",
+  "<space>fb",
+  ":Telescope file_browser",
+  { noremap = true }
+)
+
+
+
 --[[
 -- Some servers have issues with backup files, see #649.
 vim.opt.backup = false
@@ -106,7 +124,6 @@ vim.api.nvim_create_autocmd("User", {
     command = "call CocActionAsync('showSignatureHelp')",
     desc = "Update signature help on jump placeholder"
 })
-
 
 -- Applying codeAction to the selected region.
 -- Example: `<leader>aap` for current paragraph

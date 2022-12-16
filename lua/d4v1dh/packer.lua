@@ -7,19 +7,25 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   use {
-  'nvim-lualine/lualine.nvim',
-  requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    'nvim-lualine/lualine.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
 
   use {
-    'nvim-treesitter/nvim-treesitter', {
+    'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate'
-  }}
-  use 'nvim-treesitter/nvim-treesitter-context'
+  }
 
+  use 'nvim-treesitter/nvim-treesitter-context'
+  use {
+    'nvim-telescope/telescope.nvim', tag = '0.1.x',
+    requires = {'nvim-lua/plenary.nvim'} 
+  }
+  use { "nvim-telescope/telescope-file-browser.nvim" }
+
+  use 'nvim-tree/nvim-web-devicons'
   use 'ahonn/vim-fileheader'
-  --use {'shaunsingh/oxocarbon.nvim', run = './install.sh'}
-  use {'shaunsingh/oxocarbon.nvim', branch = 'fennel'}
+  use {'nyoom-engineering/oxocarbon.nvim'}
   --use 'rebelot/kanagawa.nvim'
   use 'github/copilot.vim'
   use 'neovim/nvim-lspconfig'
@@ -27,7 +33,7 @@ return require('packer').startup(function(use)
   use 'hrsh7th/cmp-nvim-lsp'
   -- use {'neoclide/coc.nvim', branch = 'release'}
 end)
-  -- use 'folke/tokyonight.nvim'
-  -- use 'sbdchd/neoformat'
-  -- use 'ThePrimeagen/vim-be-good'
+-- use 'folke/tokyonight.nvim'
+-- use 'sbdchd/neoformat'
+-- use 'ThePrimeagen/vim-be-good'
 
